@@ -12,9 +12,9 @@ public class UI extends JFrame{
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(2, 1));
         inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(1, 4));
+        inputPanel.setLayout(new GridLayout(2, 2));
         buttonPanel = new JPanel();
-        inputPanel.setLayout(new BorderLayout());
+        buttonPanel.setLayout(new BorderLayout());
         JLabel s1 = new JLabel("Secuencia 1: ");
         JLabel s2 = new JLabel("Secuencia 2: ");
         JTextField secuence1 = new JTextField();
@@ -24,7 +24,7 @@ public class UI extends JFrame{
         inputPanel.add(secuence1);
         inputPanel.add(s2);
         inputPanel.add(secuence2);
-        inputPanel.add(botoncito, BorderLayout.CENTER);
+        buttonPanel.add(botoncito, BorderLayout.CENTER);
         mainPanel.add(inputPanel);
         mainPanel.add(buttonPanel);
         setLocationRelativeTo(null);
