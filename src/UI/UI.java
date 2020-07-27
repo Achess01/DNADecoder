@@ -5,11 +5,12 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static Run.Decoder.run;
 
 public class UI extends JFrame{
     private final int WIDTH = 750;
     private final int  HEIGHT = 450;
-    private JPanel mainPanel, inputPanel, buttonPanel;
+    private JPanel mainPanel, inputPanel, buttonPanel, resultPanel;
     JLabel resultado;
 
     public UI(){
@@ -19,13 +20,18 @@ public class UI extends JFrame{
         int ancho = tamanoPantalla.width;
         this.setSize(1*(ancho/5), 2*(alto/5));
         //setResizable(false);
-        resultado = new JLabel("¿?");
+
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(2, 1));
+        mainPanel.setLayout(new GridLayout(3, 1));
         inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(2, 2));
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new BorderLayout());
+        resultPanel = new JPanel();
+        resultPanel.setLayout(new GridLayout(1, 2));
+        resultado = new JLabel("¿?");
+        resultPanel.add(new JLabel("Resultado:  "));
+        resultPanel.add(resultado);
         JLabel s1 = new JLabel("Secuencia 1: ");
         JLabel s2 = new JLabel("Secuencia 2: ");
         JTextField secuence1 = new JTextField();
@@ -35,10 +41,10 @@ public class UI extends JFrame{
         inputPanel.add(secuence1);
         inputPanel.add(s2);
         inputPanel.add(secuence2);
-        buttonPanel.add(botoncito, BorderLayout.NORTH);
-        buttonPanel.add(resultado, Label.CENTER);
+        buttonPanel.add(botoncito, BorderLayout.CENTER);
         mainPanel.add(inputPanel);
         mainPanel.add(buttonPanel);
+        mainPanel.add(resultPanel);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,10 +57,11 @@ public class UI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try{
-                    
+                    resultado.setText(run(secuence1.getText(), secuence2.getText()));
                 }
                 catch (Exception ex){
                     JOptionPane.showMessageDialog(null, "Revise que los campo estén llenos");
+
                 }
             }
         });
