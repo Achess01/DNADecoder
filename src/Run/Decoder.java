@@ -37,7 +37,8 @@ public class Decoder {
             Collections.sort(secuencias, (s, s1) -> {
                 return s.length() > s1.length() ? 1 : -1;
             });
-            if(secuencias.size() == 0){
+            if(secuencias.size() == 0 ||
+                    secuencias.get(secuencias.size() - 1).length() < 2){
                 return "NO HAY COINCIDENCIAS";
             }
             return secuencias.get(secuencias.size() - 1);
