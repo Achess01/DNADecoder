@@ -61,7 +61,7 @@ public class UI extends JFrame{
                 }
                 catch (Exception ex){
                     JOptionPane.showMessageDialog(null, "Revise que los campo estén llenos");
-
+                    System.out.println(ex);
                 }
             }
         });
